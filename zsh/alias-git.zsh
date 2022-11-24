@@ -1,11 +1,13 @@
 alias g='git'
 
+alias glog="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'"
+
 alias ga='git add'
 alias gaa='git add --all'
 
 alias gb='git branch'
 
-alias gc='git commit -v'
+alias gcv='git commit -v'
 alias gca='git commit -v -a'
 alias gcmsg='git commit -m'
 alias gcam='git commit -a -m'
