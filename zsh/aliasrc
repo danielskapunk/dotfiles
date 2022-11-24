@@ -1,7 +1,11 @@
 # ssh alias
-#alias sshc-curiosonasdaniel='ssh daniel@curiosonas.lan'
+alias sshc-curiosonasdaniel='ssh daniel@curiosonas.lan'
 #alias sshc-curiosonasroot='ssh root@curiosonas.local'
 #alias mineserv='ssh centos@vps-b35b6f7a.vps.ovh.ca'
+ZTTOKEN=$(cat $HOME/.zeroTierOneAuthToken)
+alias zt="zerotier -T$ZTTOKEN"
+
+alias cati=catimg -w 40		#catimg width 40
 
 #
 # # ex - archive extractor
