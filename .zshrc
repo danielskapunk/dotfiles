@@ -1,3 +1,7 @@
+ZSH_DIR="$HOME/dotfiles/zsh"
+GITALIAS_DIR="$HOME/dotfiles/zsh"
+PWRL10_DIR="$HOME/linuxapps/powerlevel10k"
+SYNTAXHL="$HOME/linuxapps/zsh-syntax-highlighting"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -51,13 +55,15 @@ export NVM_DIR="$HOME/.nvm"
 export PAGER="less"
 
 # Load aliases and shortcuts if existent.
-[ -f "$HOME/zsh/aliasrc" ] && source "$HOME/zsh/aliasrc"
+[ -f "$ZSH_DIR/aliasrc" ] && source "$ZSH_DIR/aliasrc"
+[ -f "$ZSH_DIR/systemctl-alias" ] && source "$ZSH_DIR/systemctl-alias"
+[ -f "$GITALIAS_DIR/alias-git.zsh" ] && source "$GITALIAS_DIR/alias-git.zsh"
 
 # Load ; should be last.
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/autojump/autojump.zsh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+[ -f "$SYNTAXHL/zsh-syntax-highlighting.zsh" ] && source "$SYNTAXHL/zsh-syntax-highlighting.zsh"
+[ -f "$PWRL10_DIR/powerlevel10k.zsh-theme" ] && source "$PWRL10_DIR/powerlevel10k.zsh-theme"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
