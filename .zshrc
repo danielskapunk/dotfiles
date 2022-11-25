@@ -1,7 +1,9 @@
-ZSH_DIR="$HOME/dotfiles/zsh"
-GITALIAS_DIR="$HOME/dotfiles/zsh"
-PWRL10_DIR="$HOME/linuxapps/powerlevel10k"
-SYNTAXHL="$HOME/linuxapps/zsh-syntax-highlighting"
+if [[ -r "$HOME/dotfiles/vars.zsh" ]];
+then
+  source "$HOME/dotfiles/vars.zsh"
+else 
+  source "$HOME/dotfiles/vars.example.zsh"
+fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
