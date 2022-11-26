@@ -5,7 +5,9 @@ alias sshc-curiosonasdaniel='ssh daniel@curiosonas.lan'
 ZTTOKEN=$(cat $HOME/.zeroTierOneAuthToken)
 alias zt="zerotier -T$ZTTOKEN"
 
-alias cati=catimg -w 40		#catimg width 40
+alias cati="catimg -w 40"		#catimg width 40
+
+alias py="python3"
 
 #
 # # ex - archive extractor

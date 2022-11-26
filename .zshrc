@@ -47,6 +47,8 @@ bindkey "^[[1;5D" backward-word
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+# Android platform-tools
+[ -d "$HOME/lapps/android-cli" ] && export PATH=${PATH}:$HOME/lapps/android-cli || echo 'no android-cli'
 
 # NVM installation
 export NVM_DIR="$HOME/.nvm"
@@ -71,7 +73,11 @@ source /usr/share/autojump/autojump.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-autoload -Uz compinit
+#autoload -Uz compinit
 fpath+=~/.zfunc
+# add our dotfiles completion folder
+fpath+=~/dotfiles/zsh/completions
+autoload -Uz compinit
+
 # add snaps bin to path
 export PATH="$PATH:/snap/bin"
