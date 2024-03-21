@@ -1,3 +1,5 @@
+#source ~/data/linuxapps/zsnaps/zsh-snap/znap.zsh
+
 if [[ -r "$HOME/dotfiles/vars.zsh" ]];
 then
   source "$HOME/dotfiles/vars.zsh"
@@ -66,9 +68,11 @@ export PAGER="less"
 # Load ; should be last.
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 
 source /usr/share/autojump/autojump.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+#source /usr/share/doc/fzf/examples/completion.zsh
 [ -f "$SYNTAXHL/zsh-syntax-highlighting.zsh" ] && source "$SYNTAXHL/zsh-syntax-highlighting.zsh"
 [ -f "$PWRL10_DIR/powerlevel10k.zsh-theme" ] && source "$PWRL10_DIR/powerlevel10k.zsh-theme"
-
+#znap source marlonrichert/zsh-autocomplete
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -81,3 +85,13 @@ autoload -Uz compinit
 
 # add snaps bin to path
 export PATH="$PATH:/snap/bin"
+
+# add composer to path
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+if [ -e /home/daniel/.nix-profile/etc/profile.d/nix.sh ]; then . /home/daniel/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+
+eval "$(zoxide init zsh)"
+
+eval "$(atuin init zsh --disable-up-arrow)"

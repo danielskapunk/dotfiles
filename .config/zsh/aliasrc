@@ -1,4 +1,6 @@
+#alias php=/usr/bin/php7.4
 # ssh alias
+alias ssh-dphone='ssh -p 8022 u0_a256@dphone.lan'
 alias sshc-curiosonasdaniel='ssh daniel@curiosonas.lan'
 #alias sshc-curiosonasroot='ssh root@curiosonas.local'
 #alias mineserv='ssh centos@vps-b35b6f7a.vps.ovh.ca'
@@ -39,18 +41,21 @@ alias open='xdg-open'
 
 export EDITOR=vim
 
-alias pacman-update='sudo pacman-mirrors --geoip'
+alias cd='z'
+alias zz='z -'
+alias ls='eza'
 
-alias ls='ls --color'
-#alias ll='ls -l'
+#alias ls='ls --color'
+alias ll='ls -l'
 # ls, the common ones I use a lot shortened for rapid fire usage
-alias l='ls -lFh'     #size,show type,human readable
-alias la='ls -lAFh'   #long list,show almost all,show type,human readable
-alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
+alias l='ls -l'
+#alias l='ls -lFh'     #size,show type,human readable
+alias la='ls -lAh'   #long list,show almost all,show type,human readable
+alias lr='ls -tRh'   #sorted by date,recursive,show type,human readable
+alias lt='ls -l -snew'   #long list,sorted by date,show type,human readable
 alias ll='ls -l'      #long list
 alias ldot='ls -ld .*'
-alias lS='ls -1FSsh'
+alias lS='ls -1Ssh'
 alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
 
@@ -88,8 +93,9 @@ alias unexport='unset'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias vim='vim'
-alias vi='vim'
+alias nvim='~/lapps/nvim.appimage'
+alias vim='nvim'
+alias vi='nvim'
 alias gds-start='sudo systemctl start openvpn-client@gds'
 alias gds-stop='sudo systemctl stop openvpn-client@gds'
 gitpush() {
