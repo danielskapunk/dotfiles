@@ -1,10 +1,10 @@
 #source ~/data/linuxapps/zsnaps/zsh-snap/znap.zsh
 
-if [[ -r "$HOME/dotfiles/vars.zsh" ]];
+if [[ -r "$HOME/dotfiles/.config/zsh/vars.zsh" ]];
 then
-  source "$HOME/dotfiles/vars.zsh"
+  source "$HOME/dotfiles/.config/zsh/vars.zsh"
 else 
-  source "$HOME/dotfiles/vars.example.zsh"
+  source "$HOME/dotfiles/.config/zsh/vars.example.zsh"
 fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -85,6 +85,8 @@ autoload -Uz compinit
 
 # add snaps bin to path
 export PATH="$PATH:/snap/bin"
+# add user bin to path
+export PATH="$PATH:/home/daniel/.local/bin"
 
 # add composer to path
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
