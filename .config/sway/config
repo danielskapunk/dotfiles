@@ -19,15 +19,15 @@ set $term /home/daniel/.cargo/bin/alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-exec --no-startup-id ulauncher --hide-window
-set $menu ulauncher-toggle | xargs swaymsg exec -- 
+#exec --no-startup-id ulauncher --hide-window
+#set $menu ulauncher-toggle 
 
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/daniel/Pictures/wallpapers/Simon\ Stålenhag\ Wallpapers-THE\ ELECTRIC\ STATE\ -2017-\ -\ by_mainservers1.jpg fill
+output * bg /home/daniel/Pictures/wallpapers/Simon-THE_ELECTRIC_STATE.jpg fill
 #
 # Example configuration:
 #
@@ -69,12 +69,16 @@ output eDP-1 pos 500 1080
 # CUSTOM KEY BINDINGS
 # bindsym $mod+Shift+s exec /home/daniel/lapps/nvim.appimage /home/daniel/.config/sway/config
 bindsym $mod+Shift+c exec google-chrome
-bindsym $mod+Shift+Space exec rofi -show run
+bindsym Mod1+Space exec rofi -show combi -modes combi -combi-modi "drun,run"
 assign [instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] workspace 4:music 
+
+## Clipboard Manager
+exec /usr/bin/wl-paste -w $HOME/.local/bin/cliphist store
+bindsym Ctrl+Shift+Mod1+v exec $HOME/.local/bin/cliphist list | rofi -dmenu | $HOME/.local/bin/cliphist decode | wl-copy 
 
 
 ### Key bindings
-#
+
 # Basics:
 #
     # Start a terminal
@@ -84,7 +88,7 @@ assign [instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] workspace 4:music
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym Mod1+Space exec $menu
+    #bindsym Mod1+Space exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -228,16 +232,47 @@ for_window [app_id="ulauncher"] border none
 
 ## KDE Connect floating menus
 for_window [app_id="org.kde.kdeconnect-indicator"] floating enable
+## POP UPS and Generated windows
+#for_window [app_id=""] floating enable
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable;
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 800 600
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable focus
+for_window [window_type="menu"] floating enable
+
 
 #exec ~/kde-sway-fix.sh
 
+### OSD audio, brightness
 
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+# OSD server
+exec swayosd-server
 
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+#bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+#bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+
+#bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Sink volume raise optionally with --device
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
+# Sink volume lower optionally with --device #--device alsa_output.pci-0000_11_00.4.analog-stereo.monitor
+bindsym XF86AudioLowerVolume exec  swayosd-client --output-volume lower
+# Sink volume toggle mute
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+# Source volume toggle mute
+bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
+
+# Brightness raise
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
+# Brightness lower
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
+
+### End OSD
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*.conf

@@ -83,14 +83,6 @@ fpath+=~/.zfunc
 fpath+=~/dotfiles/zsh/completions
 autoload -Uz compinit
 
-# add snaps bin to path
-export PATH="$PATH:/snap/bin"
-# add user bin to path
-export PATH="$PATH:/home/daniel/.local/bin"
-
-# add composer to path
-export PATH="$PATH:$HOME/.config/composer/vendor/bin"
-
 if [ -e /home/daniel/.nix-profile/etc/profile.d/nix.sh ]; then . /home/daniel/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 
