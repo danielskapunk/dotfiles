@@ -1,0 +1,18 @@
+#import = ["~/.config/alacritty/themes/themes/iris.toml"]
+#import = ["~/.config/alacritty/themes/themes/nordic.toml"]
+import = ["~/.config/alacritty/themes/themes/tokyo-night.toml"]
+
+#[colors.primary]
+#background = "#24314b"
+#foreground = "#d3ffea"
+
+[font]
+normal = { family = "MesloLGS NF", style = "Regular" }
+bold = { family = "MesloLGS NF", style = "Bold" }
+italic = { family = "MesloLGS NF", style = "Italic" }
+bold_italic = { family = "MesloLGS NF", style = "Bold Italic" }
+size = 12
+
+
+[window]
+opacity = 0.95

@@ -44,44 +44,6 @@ stop=none,none,Stop
 stop_after_current=Meta+Shift+V,Meta+Shift+V,Stop after current Track
 toggleMainWindow=none,none,Toggle Main Window
 
-[bismuth]
-_k_friendly_name=Window Tiling
-decrease_master_size=none,none,Decrease Master Area Size
-decrease_master_win_count=Meta+[,Meta+[,Decrease Master Area Window Count
-decrease_window_height=Meta+Ctrl+K,Meta+Ctrl+K,Decrease Window Height
-decrease_window_width=Meta+Ctrl+H,Meta+Ctrl+H,Decrease Window Width
-focus_bottom_window=Meta+J,Meta+J,Focus Bottom Window
-focus_left_window=Meta+H,Meta+H,Focus Left Window
-focus_next_window=none,none,Focus Next Window
-focus_prev_window=none,none,Focus Previous Window
-focus_right_window=Meta+L,Meta+L,Focus Right Window
-focus_upper_window=Meta+K,Meta+K,Focus Upper Window
-increase_master_size=none,none,Increase Master Area Size
-increase_master_win_count=Meta+],Meta+],Increase Master Area Window Count
-increase_window_height=Meta+Ctrl+J,Meta+Ctrl+J,Increase Window Height
-increase_window_width=Meta+Ctrl+L,Meta+Ctrl+L,Increase Window Width
-move_window_to_bottom_pos=none,Meta+Shift+J,Move Window Down
-move_window_to_left_pos=Meta+Shift+H,Meta+Shift+H,Move Window Left
-move_window_to_next_pos=none,none,Move Window to the Next Position
-move_window_to_prev_pos=none,none,Move Window to the Previous Position
-move_window_to_right_pos=Meta+Shift+L,Meta+Shift+L,Move Window Right
-move_window_to_upper_pos=Meta+Shift+K,Meta+Shift+K,Move Window Up
-next_layout=Meta+\\\\,Meta+\\\\,Switch to the Next Layout
-prev_layout=Meta+|,Meta+|,Switch to the Previous Layout
-push_window_to_master=Meta+Return,Meta+Return,Push Active Window to Master Area
-rotate=none,Meta+R,Rotate
-rotate_part=none,Meta+Shift+R,Rotate Part
-rotate_reverse=none,none,Rotate (Reverse)
-toggle_float_layout=Meta+Shift+F,Meta+Shift+F,Toggle Floating Layout
-toggle_monocle_layout=Meta+M,Meta+M,Toggle Monocle Layout
-toggle_quarter_layout=none,none,Toggle Quarter Layout
-toggle_spiral_layout=none,none,Toggle Spiral Layout
-toggle_spread_layout=none,none,Toggle Spread Layout
-toggle_stair_layout=none,none,Toggle Stair Layout
-toggle_three_column_layout=none,none,Toggle Three Column Layout
-toggle_tile_layout=none,Meta+T,Toggle Tile Layout
-toggle_window_floating=Meta+F,Meta+F,Toggle Active Window Floating
-
 [kaccess]
 Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,Toggle Screen Reader On and Off
 _k_friendly_name=Accessibility
@@ -135,16 +97,16 @@ PoloniumFocusLeft=Meta+Left,none,Polonium: Focus Left
 PoloniumFocusRight=Meta+Right,none,Polonium: Focus Right
 PoloniumInsertAbove=none,none,Polonium: Insert Above
 PoloniumInsertBelow=none,none,Polonium: Insert Below
-PoloniumInsertLeft=none,none,Polonium: Insert Left
-PoloniumInsertRight=none,none,Polonium: Insert Right
+PoloniumInsertLeft=Meta+Shift+Left,none,Polonium: Insert Left
+PoloniumInsertRight=Meta+Shift+Right,none,Polonium: Insert Right
 PoloniumOpenSettings=none,none,Polonium: Open Settings Dialog
 PoloniumResizeAbove=none,none,Polonium: Resize Above
 PoloniumResizeBelow=none,none,Polonium: Resize Below
-PoloniumResizeLeft=none,none,Polonium: Resize Left
-PoloniumResizeRight=none,none,Polonium: Resize Right
+PoloniumResizeLeft=Meta+Alt+Left,none,Polonium: Resize Left
+PoloniumResizeRight=Meta+Alt+Right,none,Polonium: Resize Right
 PoloniumRetileWindow=Meta+Shift+Space,none,Polonium: Retile Window
 PoloniumSwitchBTree=none,none,Polonium: Use Binary Tree Engine
-PoloniumSwitchHalf=none,none,Polonium: Use Half Engine
+PoloniumSwitchHalf=Meta+Shift+E,none,Polonium: Use Half Engine
 PoloniumSwitchKwin=none,none,Polonium: Use KWin Engine
 PoloniumSwitchThreeColumn=none,none,Polonium: Use Three Column Engine
 Setup Window Shortcut=none,,Setup Window Shortcut
@@ -399,8 +361,17 @@ switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
 
+[services][Alacritty.desktop]
+New=Meta+Shift+A
+
+[services][firefox-2.desktop]
+_launch=Meta+Shift+X
+
+[services][google-chrome-2.desktop]
+_launch=Meta+Shift+C
+
 [services][org.kde.konsole.desktop]
-_launch=Ctrl+Alt+T
+_launch=Meta+Shift+T
 
 [services][org.kde.spectacle.desktop]
 _launch=Meta+Shift+S\tPrint
