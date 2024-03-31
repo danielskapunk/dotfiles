@@ -70,7 +70,8 @@ output eDP-1 pos 500 1080
 # bindsym $mod+Shift+s exec /home/daniel/lapps/nvim.appimage /home/daniel/.config/sway/config
 bindsym $mod+Shift+c exec google-chrome
 bindsym Mod1+Space exec rofi -show combi -modes combi -combi-modi "drun,run"
-assign [instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] workspace 4:music 
+#assign [instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] workspace 4:music
+bindsym $mod+Shift+t exec $term
 
 ## Clipboard Manager
 exec /usr/bin/wl-paste -w $HOME/.local/bin/cliphist store
@@ -105,6 +106,8 @@ bindsym Ctrl+Shift+Mod1+v exec $HOME/.local/bin/cliphist list | rofi -dmenu | $H
 #
 # Moving around:
 #
+    # Alt tab like
+    bindsym Mod1+Tab workspace back_and_forth
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
