@@ -91,8 +91,8 @@ Kill Window=Meta+Ctrl+Esc,Meta+Ctrl+Esc,Kill Window
 Move Tablet to Next Output=none,none,Move the tablet to the next output
 Overview=Alt+A,Meta+W,Toggle Overview
 PoloniumCycleEngine=none,none,Polonium: Cycle Engine
-PoloniumFocusAbove=Meta+Up,none,Polonium: Focus Above
-PoloniumFocusBelow=Meta+Down,none,Polonium: Focus Below
+PoloniumFocusAbove=none,none,Polonium: Focus Above
+PoloniumFocusBelow=none,none,Polonium: Focus Below
 PoloniumFocusLeft=Meta+Left,none,Polonium: Focus Left
 PoloniumFocusRight=Meta+Right,none,Polonium: Focus Right
 PoloniumInsertAbove=none,none,Polonium: Insert Above
@@ -342,7 +342,7 @@ activate widget 5=none,none,Activate Application Launcher Widget
 activate widget 59=none,none,Activate Application Launcher Widget
 activate widget 70=none,none,Activate Application Launcher Widget
 activate widget 71=none,none,Activate Application Launcher Widget
-activate widget 84=Alt+1,none,Activate Application Menu Widget
+activate widget 84=none,none,Activate Application Menu Widget
 clear-history=none,,Clear Clipboard History
 clipboard_action=Ctrl+Alt+Shift+X,Meta+Ctrl+X,Automatic Action Popup Menu
 cycle-panels=Meta+Alt+P,Meta+Alt+P,Move keyboard focus between panels
@@ -362,7 +362,7 @@ switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
 
 [services][Alacritty.desktop]
-New=Meta+Shift+A
+New=Meta+Shift+A\tMeta+T
 
 [services][firefox-2.desktop]
 _launch=Meta+Shift+X
@@ -375,6 +375,9 @@ _launch=Meta+Shift+T
 
 [services][org.kde.spectacle.desktop]
 _launch=Meta+Shift+S\tPrint
+
+[services][rofi.desktop]
+_launch=Meta+Alt+Shift+Space
 
 [services][ulauncher-toggle-2.desktop]
 _launch=Alt+Shift+Space
