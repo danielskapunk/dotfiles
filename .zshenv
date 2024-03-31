@@ -11,3 +11,4 @@ export PATH="$PATH:/snap/bin"
 export PATH="$PATH:/home/daniel/.local/bin"
 # add composer to path
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export LESS=-R
