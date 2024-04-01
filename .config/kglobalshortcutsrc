@@ -51,7 +51,7 @@ _k_friendly_name=Accessibility
 [kcm_touchpad]
 Disable Touchpad=Touchpad Off,Touchpad Off,Disable Touchpad
 Enable Touchpad=Touchpad On,Touchpad On,Enable Touchpad
-Toggle Touchpad=Meta+Ctrl+Zenkaku Hankaku\tTouchpad Toggle,Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku,Toggle Touchpad
+Toggle Touchpad=Meta+Ctrl+Zenkaku Hankaku\tTouchpad Toggle,Touchpad Toggle,Toggle Touchpad
 _k_friendly_name=Touchpad
 
 [kmix]
@@ -91,8 +91,8 @@ Kill Window=Meta+Ctrl+Esc,Meta+Ctrl+Esc,Kill Window
 Move Tablet to Next Output=none,none,Move the tablet to the next output
 Overview=Alt+A,Meta+W,Toggle Overview
 PoloniumCycleEngine=none,none,Polonium: Cycle Engine
-PoloniumFocusAbove=none,none,Polonium: Focus Above
-PoloniumFocusBelow=none,none,Polonium: Focus Below
+PoloniumFocusAbove=Meta+Up,none,Polonium: Focus Above
+PoloniumFocusBelow=Meta+Down,none,Polonium: Focus Below
 PoloniumFocusLeft=Meta+Left,none,Polonium: Focus Left
 PoloniumFocusRight=Meta+Right,none,Polonium: Focus Right
 PoloniumInsertAbove=none,none,Polonium: Insert Above
@@ -111,6 +111,7 @@ PoloniumSwitchKwin=none,none,Polonium: Use KWin Engine
 PoloniumSwitchThreeColumn=none,none,Polonium: Use Three Column Engine
 Setup Window Shortcut=none,,Setup Window Shortcut
 Show Desktop=Meta+D,Meta+D,Peek at Desktop
+Suspend Compositing=Alt+Shift+F12,Alt+Shift+F12,Suspend Compositing
 Switch One Desktop Down=none,Meta+Ctrl+Down,Switch One Desktop Down
 Switch One Desktop Up=none,Meta+Ctrl+Up,Switch One Desktop Up
 Switch One Desktop to the Left=none,Meta+Ctrl+Left,Switch One Desktop to the Left
