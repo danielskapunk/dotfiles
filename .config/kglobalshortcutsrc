@@ -51,7 +51,7 @@ _k_friendly_name=Accessibility
 [kcm_touchpad]
 Disable Touchpad=Touchpad Off,Touchpad Off,Disable Touchpad
 Enable Touchpad=Touchpad On,Touchpad On,Enable Touchpad
-Toggle Touchpad=Meta+Ctrl+Zenkaku Hankaku\tTouchpad Toggle,Touchpad Toggle,Toggle Touchpad
+Toggle Touchpad=Meta+Ctrl+Zenkaku Hankaku\tTouchpad Toggle,Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku,Toggle Touchpad
 _k_friendly_name=Touchpad
 
 [kmix]
