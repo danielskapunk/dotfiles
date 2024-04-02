@@ -4,15 +4,15 @@ daemonize = true
 max_history = 50
 # File path of clip history,
 # if you omit this value, clipcatd persists history in `$XDG_CACHE_HOME/clipcat/clipcatd-history`.
-history_file_path = "/home/<username>/.cache/clipcat/clipcatd-history"
+history_file_path = "/home/daniel/.cache/clipcat/clipcatd-history"
 # File path of PID file,
 # if you omit this value, clipcatd places the PID file on `$XDG_RUNTIME_DIR/clipcatd.pid`.
-pid_file = "/run/user/<user-id>/clipcatd.pid"
+pid_file = "/run/user/1000/clipcatd.pid"
 
 [log]
 # Emit log message to a log file.
 # If you omit this value, clipcatd disables emitting to a log file.
-file_path = "/path/to/log/file"
+file_path = "~/tmp/clipcat.log"
 # Emit log message to systemd-journald.
 emit_journald = true
 # Emit log message to stdout.
@@ -52,7 +52,7 @@ host = "127.0.0.1"
 port = 45045
 # Path of unix domain socket.
 # If you omit this value, clipcatd places the socket on `$XDG_RUNTIME_DIR/clipcat/grpc.sock`.
-local_socket = "/run/user/<user-id>/clipcat/grpc.sock"
+local_socket = "/run/user/1000/clipcat/grpc.sock"
 
 [dbus]
 # Enable D-Bus.

@@ -259,7 +259,9 @@ globalkeys = gears.table.join(
               {description = "open chrome", group = "APPS"}),
     awful.key({ modkey,     }, "t", function () awful.spawn("alacritty") end,
               {description = "open konsole", group = "APPS"}),
-     awful.key({ "Mod1",     }, "space", function () awful.spawn.with_shell("rofi -show combi -modes combi -combi-modi 'drun,run'") end,
+    awful.key({ "Mod1",     }, "space", function () awful.spawn.with_shell("rofi -show combi -modes combi -combi-modi 'drun,run'") end,
+              {description = "rofi", group = "APPS"}),
+    awful.key({ modkey, }, "v", function () awful.spawn.with_shell("clipcat-menu") end,
               {description = "rofi", group = "APPS"}),
 
 
@@ -610,4 +612,5 @@ end)
 
 --- STARUP PROGRAMS
 awful.util.spawn_with_shell("~/dev/all/monivors_screen_linux/lg-awesome.sh")
+awful.util.spawn_with_shell("clipcatd")
 --- NETWORK WIDGET
