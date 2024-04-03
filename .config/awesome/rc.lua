@@ -2,6 +2,8 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+-- Volume Widget
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -192,7 +194,6 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
     awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
@@ -233,11 +234,15 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
+            volume_widget{
+              widget_type = 'arc',
+              card=0
+            },
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
-            s.mylayoutbox,
+            s.mylayoutbox, 
             net_wireless,
         },
     }
@@ -263,6 +268,10 @@ globalkeys = gears.table.join(
               {description = "rofi", group = "APPS"}),
     awful.key({ modkey, }, "v", function () awful.spawn.with_shell("clipcat-menu") end,
               {description = "rofi", group = "APPS"}),
+     -- Multimedia keys
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 2+") end),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 2-") end),
+    awful.key({ modkey, }, "g", function () awful.spawn.with_shell("/home/daniel/dev/search_script.sh") end,{description = "search selection google", group = "APPS"}),
 
 
     --- CUSTOMS SHORTCUTS END DANI
@@ -603,14 +612,16 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --
 -- DISPLAY SETTING
 --/home/daniel/dev/all/monitors_screens_linux
-awful.spawn.easy_async_with_shell(command, function()
-    awful.spawn.easy_async_with_shell("/home/daniel/dev/all/monitors_screens_linux/lg-awesome.sh", function(out)
-        --mylabel.text = out
-        a=1
-    end)
-end)
+
+
 
 --- STARUP PROGRAMS
-awful.util.spawn_with_shell("~/dev/all/monivors_screen_linux/lg-awesome.sh")
+-- awful.util.spawn_with_shell("~/dev/all/monitors_screen_linux/lg-awesome.sh")
+--awful.spawn.easy_async_with_shell(command, function()
+--    awful.spawn.easy_async_with_shell("/home/daniel/dev/all/monitors_screens_linux/lg-awesome.sh", function(out)
+--        --mylabel.text = out
+--        a=1
+--    end)
+--end)
 awful.util.spawn_with_shell("clipcatd")
 --- NETWORK WIDGET
