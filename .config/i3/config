@@ -8,13 +8,17 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 8
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
+set $left Left
+set $down Down
+set $up Up
+set $right Right
 # Your preferred terminal emulator
-set $term /home/daniel/.cargo/bin/alacritty 
+set $term ~/.cargo/bin/alacritty 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -22,7 +26,14 @@ set $term /home/daniel/.cargo/bin/alacritty
 #exec --no-startup-id ulauncher --hide-window
 #set $menu ulauncher-toggle 
 
-include /etc/sway/config-vars.d/*
+#include /etc/sway/config-vars.d/*
+exec feh --bg-scale ~/Pictures/wallpapers/Simon-THE_ELECTRIC_STATE.jpg  
+
+# init i3 layout to add dynamic layout 
+exec i3-layouts
+set $i3l vstack to workspace 1
+set $i3l vstack 0.6 to workspace 2
+bindsym $mod+Return exec i3l swap container with mark $(i3-msg -t get_workspaces | jq '.[] | select(.focused).num'):main
 
 ### Output configuration
 #
@@ -31,7 +42,7 @@ include /etc/sway/config-vars.d/*
 #
 # Example configuration:
 #
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#   output HDMI-A-1 resolutiton 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 #output DP-2 pos 0 0
@@ -69,22 +80,31 @@ include /etc/sway/config-vars.d/*
 # CUSTOM KEY BINDINGS
 # bindsym $mod+Shift+s exec /home/daniel/lapps/nvim.appimage /home/daniel/.config/sway/config
 bindsym $mod+Shift+c exec google-chrome
-bindsym Mod1+Space exec rofi -show combi -modes combi -combi-modi "drun,run"
+# bindsym $mod+g exec --no-startup-id ~/dev/search_script.sh
+bindsym Mod1+space exec --no-startup-id ~/.config/i3/rofi.sh
 #assign [instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod"] workspace 4:music
 bindsym $mod+Shift+t exec $term
 
 ## Clipboard Manager
-exec /usr/bin/wl-paste -w $HOME/.local/bin/cliphist store
-bindsym Ctrl+Shift+Mod1+v exec $HOME/.local/bin/cliphist list | rofi -dmenu | $HOME/.local/bin/cliphist decode | wl-copy 
+exec_always --no-startup-id clipcatd    # start clipcatd at startup
+bindsym $mod+v exec clipcat-menu
+## show hide polybar
+# exec_always --no-startup-id polybar --config=.config/polybar/config.ini example
+# bindsym $mod+p exec ~/.config/polybar/toggle.sh 
+
+# Start kdeconnect-app
+# exec_always --no-startup-id kdeconnect-app
+
+
+# remove titles
+default_border pixel 5
+default_floating_border pixel 3
 
 
 ### Key bindings
 
 # Basics:
 #
-    # Start a terminal
-    bindsym $mod+Return exec $term
-
     # Kill focused window
     bindsym $mod+q kill
 
@@ -102,33 +122,28 @@ bindsym Ctrl+Shift+Mod1+v exec $HOME/.local/bin/cliphist list | rofi -dmenu | $H
     bindsym $mod+Ctrl+r reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Ctrl+q exec sway exit 
+    bindsym $mod+Ctrl+q exec i3-msg exit 
 #
 # Moving around:
 #
     # Alt tab like
     bindsym Mod1+Tab workspace back_and_forth
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
+    
+    # Move focus with arrows $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
-    # Move the focused window with the same, but add Shift
-    #bindsym $mod+Shift+$left move left
-    #bindsym $mod+Shift+$down move down
-    #bindsym $mod+Shift+$up move up
-    #bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+    # Move window, with arrow keys $mod+Shift+[up|down|left|right]
+    # bindsym $mod+Shift+Left move left
+    # bindsym $mod+Shift+Down move down
+    # bindsym $mod+Shift+Up move up
+    # bindsym $mod+Shift+Right move right
+    bindsym $mod+Shift+Left exec i3l move left
+    bindsym $mod+Shift+Down exec i3l move down
+    bindsym $mod+Shift+Up exec i3l move up
+    bindsym $mod+Shift+Right exec i3l move right
 #
 # Workspaces:
 #
@@ -150,31 +165,17 @@ bindsym Ctrl+Shift+Mod1+v exec $HOME/.local/bin/cliphist list | rofi -dmenu | $H
     bindsym $mod+Shift+4 move container to workspace number 4
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+    bindsym $mod+ctrl+Shift+Left move to workspace prev; workspace prev
+    bindsym $mod+ctrl+Shift+Right move to workspace next; workspace next
+
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+t layout tabbed
-    bindsym $mod+e layout toggle split
+    # Switch the current container to vstack layout
+    bindsym $mod+Shift+e exec i3l vstack 0.6
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+l floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
@@ -212,22 +213,54 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+bindsym $mod+x mode "$mode_launcher"
+
+mode "$mode_launcher" {
+    bindsym f exec firefox
+    bindsym c exec google-chrome
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+## Shutdown restart etc
+set $Locker i3lock && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym q exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Escape mode "$mode_system"
+
+
 #
 # Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
+
+# Color shemes for windows 
+set $bgcolor	#523d6499
+set $in-bgcolor #3636364D
+set $text	#ffffff
+set $u-bgcolor	#ff0000
+set $indicator	#a8a3c1
+set $in-text	#969696
+set $focused-ws	#523d6480
+set $bar-color	#523d640D
+
+# Transperency with picom compositor
+# exec_always picom -f 
+
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+  status_command SCRIPT_DIR=~/.config/i3blocks i3blocks
 }
 
 ## Remove border for these apps
@@ -237,14 +270,14 @@ bar {
 #for_window [app_id="org.kde.kdeconnect-indicator"] floating enable
 ## POP UPS and Generated windows
 #for_window [app_id=""] floating enable
-#for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable;
-#for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 800 600
-#for_window [window_role="pop-up"] floating enable
-#for_window [window_role="bubble"] floating enable
-#for_window [window_role="task_dialog"] floating enable
-#for_window [window_role="Preferences"] floating enable
-#for_window [window_type="dialog"] floating enable focus
-#for_window [window_type="menu"] floating enable
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable;
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 800 600
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable focus
+for_window [window_type="menu"] floating enable
 
 
 #exec ~/kde-sway-fix.sh
@@ -252,7 +285,7 @@ bar {
 ### OSD audio, brightness
 
 # OSD server
-exec swayosd-server
+# exec swayosd-server
 
 #bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 #bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
@@ -262,18 +295,14 @@ exec swayosd-server
 #bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 # Sink volume raise optionally with --device
-bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
-# Sink volume lower optionally with --device #--device alsa_output.pci-0000_11_00.4.analog-stereo.monitor
-bindsym XF86AudioLowerVolume exec  swayosd-client --output-volume lower
-# Sink volume toggle mute
-bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
-# Source volume toggle mute
-bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute && pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute && pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
-# Brightness raise
-bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
-# Brightness lower
-bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
+# # Brightness raise
+# bindsym XF86MonBrightnessUp exec swayosd-client --brightness raise
+# # Brightness lower
+# bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
 
 ### End OSD
 

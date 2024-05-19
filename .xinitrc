@@ -6,3 +6,5 @@
 #xrandr --output DP-2 --pos 0x0
 #xrandr --output eDP-1 --mode "2000x1333_60.00" --pos 300x1080
 # qtile start
+setxkbmap -layout us -variant altgr-intl
+#logger XINITRC
