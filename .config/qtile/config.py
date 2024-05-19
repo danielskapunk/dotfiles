@@ -71,11 +71,16 @@ keys = [
     #Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod],"f",lazy.window.toggle_fullscreen(),desc="Toggle fullscreen on the focused window"),
-    #Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control","shift"], "q", lazy.spawn("shutdown now"), desc="Shutdown"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+
+    # Volume Control
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%"), desc='Volume Up'),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%"), desc='volume down'),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle"), desc='Volume Mute'),
+    
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -92,7 +97,9 @@ for vt in range(1, 8):
     )
 
 
-# groups = [Group(i) for i in "123456789"]
+# █▀▀ █▀█ █▀█ █░█ █▀█ █▀
+# █▄█ █▀▄ █▄█ █▄█ █▀▀ ▄█
+
 groups = [
     # Screen affinity here is used to make
     # sure the groups startup on the right screens
@@ -143,19 +150,7 @@ for i in groups:
     keys.append(Key([mod], i.name, lazy.function(go_to_group(i.name))))
 
 layouts = [
-    #layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    #layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
     layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
@@ -165,9 +160,14 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+getVol = "pactl get-sink-volume  @DEFAULT_SINK@ | awk '{print $5}'"
+toggMute = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+getMute = "pactl get-sink-mute @DEFAULT_SINK@"
+checkMuteString = 'Mute: yes'
 screens = [
     Screen(
         wallpaper="~/Pictures/wallpapers/Simon-THE_ELECTRIC_STATE.jpg",
+        wallpaper_mode='fill',
         bottom=bar.Bar(
             [
                 widget.GroupBox(),
@@ -187,12 +187,20 @@ screens = [
                     emoji=True,
                     fontsize=13,
                     background='#353446',
+                    get_volume_command=getVol,
+                    mute_command=toggMute,
+                    check_mute_command=getMute,
+                    check_mute_string=checkMuteString
                 ),
                 widget.Volume(
                     font='JetBrains Mono Bold',
                     background='#353446',
                     foreground='#CAA9E0',
                     fontsize=13,
+                    get_volume_command=getVol,
+                    mute_command=toggMute,
+                    check_mute_command=getMute,
+                    check_mute_string=checkMuteString
                 ),
 
                 widget.BatteryIcon(
@@ -238,6 +246,7 @@ screens = [
     ),
     Screen(
         wallpaper="~/Pictures/wallpapers/Simon-THE_ELECTRIC_STATE.jpg",
+        wallpaper_mode='fill',
         top=bar.Bar(
           [
               widget.GroupBox(),
