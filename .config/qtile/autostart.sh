@@ -1,3 +1,5 @@
 #!/bin/sh
 nm-applet &
-/usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+#clipcatd &
+copyq &
+/usr/lib/x86_64-linux-gnu/libexec/kdeconnectd &

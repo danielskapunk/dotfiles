@@ -41,8 +41,8 @@ def autostart():
 
 @hook.subscribe.client_new
 def new_client(client):
-    logger.warning(type(client.wid))
-    logger.warning(client.wid)
+    #logger.warning(type(client.wid))
+    #logger.warning(client.wid)
     if "stremio" in client.name.lower() :
         out=subprocess.run(["xset","s","off"],capture_output=True)
         #logger.warning(out)
@@ -61,6 +61,7 @@ keys = [
     #
     Key(["mod1"], "Space", lazy.spawn('rofi -show combi -modes combi -combi-modi "drun,run"'), desc="rofi modi"),
     Key([mod,"shift"], "c", lazy.spawn("google-chrome"), desc='Web browser'),
+    Key(["mod1"], "a", lazy.spawn('rofi -show window'), desc="Show All Windows"),
 
     #bindsym Mod1+Space exec rofi -show combi -modes combi -combi-modi "drun,run"
 
@@ -103,6 +104,11 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%"), desc='volume down'),
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle"), desc='Volume Mute'),
     
+    Key([mod], "h", lazy.hide_show_bar(), desc="hide show bars"),
+    Key(["mod1","shift","control"], "v", lazy.spawn("rofi-copyq"), desc="clipboard manager"),
+
+
+    
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -117,7 +123,7 @@ for vt in range(1, 8):
             desc=f"Switch to VT{vt}",
         )
     )
-
+darkGray='#282738'
 
 # █▀▀ █▀█ █▀█ █░█ █▀█ █▀
 # █▄█ █▀▄ █▄█ █▄█ █▀▀ ▄█
@@ -125,13 +131,34 @@ for vt in range(1, 8):
 groups = [
     # Screen affinity here is used to make
     # sure the groups startup on the right screens
-    Group(name="a", screen_affinity=0),
-    Group(name="s", screen_affinity=0),
-    Group(name="d", screen_affinity=0),
-    Group(name="1", screen_affinity=1),
-    Group(name="2", screen_affinity=1),
-    Group(name="3", screen_affinity=1),
+    Group(name="a", screen_affinity=0,label="󰏃"),
+    Group(name="s", screen_affinity=0, label="󰏃"),
+    Group(name="d", screen_affinity=0,label="󰏃"),
+    Group(name="1", screen_affinity=1,label="󰏃"),
+    Group(name="2", screen_affinity=1,label="󰏃"),
+    Group(name="3", screen_affinity=1,label="󰏃"),
 ]
+groupbox1 = widget.GroupBox(
+        visible_groups=['1', '2', '3'],
+        fontsize=24,
+        borderwidth=3,
+        highlight_method='block',
+        active='#CAA9E0',
+        block_highlight_text_color="#91B1F0",
+        highlight_color='#4B427E',
+        inactive='353446',
+        foreground='#4B427E',
+        background=darkGray,
+        this_current_screen_border='#353446',
+        this_screen_border='#353446',
+        other_current_screen_border='#353446',
+        other_screen_border='#353446',
+        urgent_border='#353446',
+        rounded=True,
+        disable_drag=True,
+
+        )
+groupbox2 = widget.GroupBox(visible_groups=['a', 's', 'd'])
 
 def go_to_group(name: str):
     def _inner(qtile):
@@ -192,7 +219,7 @@ screens = [
         wallpaper_mode='fill',
         bottom=bar.Bar(
             [
-                widget.GroupBox(),
+                groupbox2,
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -243,7 +270,7 @@ screens = [
 
                 widget.Clock(
                     format='%I:%M %p',
-                    background='#282738',
+                    background=darkGray,
                     foreground='#CAA9E0',
                     font="JetBrains Mono Bold",
                     fontsize=13,
@@ -255,7 +282,7 @@ screens = [
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            border_color = '#282738',
+            border_color = darkGray,
             border_width = [0,0,0,0],
             margin = [0,0,0,0],
             #border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
@@ -271,11 +298,15 @@ screens = [
         wallpaper_mode='fill',
         top=bar.Bar(
           [
-              widget.GroupBox(),
+              widget.Image(
+                    filename='~/.config/qtile/assets/3.png',
+                ),
+              groupbox1,
             #   widget.WindowName(),
             #   widget.Clock()
           ],
           30,
+          background=darkGray
       ),
         x=0,y=0)
 ]
@@ -297,6 +328,7 @@ floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
+        Match(wm_class="copyq"),
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
@@ -306,7 +338,7 @@ floating_layout = layout.Floating(
     ]
 )
 auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = "focus"
 reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
