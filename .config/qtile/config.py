@@ -25,11 +25,32 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, qtile, widget
+from libqtile import bar, layout, qtile, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from libqtile.log_utils import logger
 import traverse
+import os
+import subprocess
+
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.Popen([home])
+
+@hook.subscribe.client_new
+def new_client(client):
+    logger.warning(type(client.wid))
+    logger.warning(client.wid)
+    if "stremio" in client.name.lower() :
+        out=subprocess.run(["xset","s","off"],capture_output=True)
+        #logger.warning(out)
+@hook.subscribe.client_killed
+def client_killed(client):
+    if "stremio" in client.name.lower() :
+        subprocess.run(["xset", "s", "on"])
+
 
 myBrowser = "google-chrome"       # My browser of choice
 
