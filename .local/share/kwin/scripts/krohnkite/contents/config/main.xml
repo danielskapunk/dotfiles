@@ -78,7 +78,7 @@
 
     <entry name="ignoreTitle" type="String">
 	    <label>Ignore windows with certain string in title(comma-separated list)</label>
-        <default></default>
+<default></default>
     </entry>
 
     <entry name="floatingClass" type="String">
@@ -183,12 +183,12 @@
 
     <entry name="directionalKeyDwm" type="Bool">
 	    <label>Up, Down, Left, and Right shortcut behaves like dwm</label>
-        <default>false</default>
+        <default>true</default>
     </entry>
 
     <entry name="directionalKeyFocus" type="Bool">
 	    <label>Up, Down, Left, and Right shortcut moves focus</label>
-        <default>true</default>
+        <default>false</default>
     </entry>
 
     <entry name="limitTileWidth" type="Bool">

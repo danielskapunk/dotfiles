@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/daniel/.config/kde-autostart.sh
+Icon=application-x-shellscript
+Name=kde-autostart.sh
+Type=Application
+X-KDE-AutostartScript=true

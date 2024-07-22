@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=KeePassXC
+GenericName=Password Manager
+Exec=/home/daniel/lapps/KeePassXC-2.7.6-x86_64_bc43de77d75aad0582a4ea3bc897e00e.appimage
+TryExec=/home/daniel/lapps/KeePassXC-2.7.6-x86_64_bc43de77d75aad0582a4ea3bc897e00e.appimage
+Icon=keepassxc
+StartupWMClass=keepassxc
+StartupNotify=true
+Terminal=false
+Type=Application
+Version=1.0
+Categories=Utility;Security;Qt;
+MimeType=application/x-keepass2;
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=2
+X-KDE-autostart-after=panel
+X-LXQt-Need-Tray=true

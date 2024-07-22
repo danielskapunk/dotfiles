@@ -69,7 +69,8 @@ export PAGER="less"
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 
 source /usr/share/autojump/autojump.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
-#source /usr/share/doc/fzf/examples/completion.zsh
+#source <(fzf --zsh)
+source /usr/share/doc/fzf/examples/completion.zsh
 [ -f "$SYNTAXHL/zsh-syntax-highlighting.zsh" ] && source "$SYNTAXHL/zsh-syntax-highlighting.zsh"
 [ -f "$PWRL10_DIR/powerlevel10k.zsh-theme" ] && source "$PWRL10_DIR/powerlevel10k.zsh-theme"
 #znap source marlonrichert/zsh-autocomplete
@@ -87,5 +88,5 @@ if [ -e /home/daniel/.nix-profile/etc/profile.d/nix.sh ]; then . /home/daniel/.n
 
 
 eval "$(zoxide init zsh)"
-
-eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(atuin init zsh)"
+#eval "$(atuin init zsh --disable-up-arrow)"
