@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/home/daniel/.xprofile
+Icon=dialog-scripts
+Name=.xprofile
+Path=
+Type=Application
+X-KDE-AutostartScript=true

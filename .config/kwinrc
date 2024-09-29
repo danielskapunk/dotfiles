@@ -15,11 +15,10 @@ XRenderSmoothScale=false
 Id_1=651200cd-a79a-4b98-8203-cf1b05cbfda3
 Id_2=aa442297-7abc-4b86-9c20-b9826def7e7e
 Id_3=d65771bc-f908-4fc2-a3ff-f3abd1bc327d
-Id_4=19fac596-c02f-4196-b131-53d0510c785b
+Id_4=fbfa40b6-2233-4704-9590-c75dda8ed371
 Name_1=dev
 Name_2=git-terminal
 Name_3=other
-Name_4=vms
 Number=4
 Rows=1
 TabBoxAlternative=false
@@ -81,6 +80,7 @@ bismuthEnabled=true
 desktopchangeosdEnabled=true
 grid-tilingEnabled=false
 highlightwindowEnabled=true
+karouselEnabled=false
 krohnkiteEnabled=true
 ktileEnabled=false
 magnifierEnabled=true
@@ -105,19 +105,26 @@ blacklist=plasmashell,Spectacle
 gapShow=false
 gapValue=14
 
+[Script-karousel]
+gapsInnerHorizontal=0
+gapsInnerVertical=0
+gapsOuterBottom=0
+gapsOuterLeft=100
+gapsOuterRight=100
+gapsOuterTop=0
+
 [Script-krohnkite]
-debug=true
-directionalKeyDwm=true
-directionalKeyFocus=false
+directionalKeyDwm=false
+directionalKeyFocus=true
 enableMonocleLayout=false
 enableSpiralLayout=false
 enableSpreadLayout=false
 enableStairLayout=false
 enableThreeColumnLayout=false
+ignoreClass=krunner,yakuake,spectacle,kded5,xwaylandvideobridge
 layoutPerActivity=false
 layoutPerDesktop=false
 newWindowAsMaster=true
-tileLayoutGap=10
 
 [Script-polonium]
 Borders=3
@@ -160,13 +167,28 @@ padding=4
 [Tiling][082926b7-efd5-5729-a15c-b736713d83b8]
 tiles={"layoutDirection":"horizontal","tiles":[]}
 
+[Tiling][10b0d2cd-0a63-5a40-8a31-798490513b82]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][1221bd09-c9a4-571d-b70c-105484f4853a]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][1d2e9707-9ca8-52cf-8fa7-e232f3d207c0]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][213a9620-187e-58a6-b80b-85d8fb95dfce]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][2f23dec6-d919-5d5d-b044-d8d58c1d1834]
 tiles={"layoutDirection":"vertical","tiles":[]}
 
+[Tiling][38b00c02-851b-5657-902e-31c317a4f0d3]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][5b7a5ba4-43cc-5910-8e98-f358f9d54b43]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][77d31151-313b-5a24-afd0-88074c3315c8]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][84eae9fa-2a8c-5236-b683-f0f09182bb6f]
@@ -183,6 +205,9 @@ tiles={"layoutDirection":"horizontal","tiles":[]}
 
 [Tiling][ea5e0d06-819b-5e94-8190-f8bb0744d0c3]
 tiles={"layoutDirection":"horizontal","tiles":[]}
+
+[Tiling][eda54938-608b-5a85-bbbb-f99288819be0]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Windows]
 AutoRaise=false
