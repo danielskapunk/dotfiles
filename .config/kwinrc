@@ -233,5 +233,7 @@ TitlebarDoubleClickCommand=Maximize
 WindowSnapZone=15
 
 [org.kde.kdecoration2]
+BorderSize=Tiny
+BorderSizeAuto=false
 library=org.kde.kwin.aurorae
 theme=__aurorae__svg__ActiveAccentFrame
