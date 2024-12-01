@@ -1,4 +1,6 @@
 alias g='git'
+# tool to remove file from history and sensitive data
+alias bfg='java -jar /home/daniel/lapps/bfg-1.14.0.jar'
 
 alias glog="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'"
 
