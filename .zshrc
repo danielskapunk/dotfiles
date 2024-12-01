@@ -9,9 +9,9 @@ fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 # Dependancies You Need for this Config
 # zsh-syntax-highlighting - syntax highlighting for ZSH in standard repos
@@ -72,11 +72,11 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 #source <(fzf --zsh)
 source /usr/share/doc/fzf/examples/completion.zsh
 [ -f "$SYNTAXHL/zsh-syntax-highlighting.zsh" ] && source "$SYNTAXHL/zsh-syntax-highlighting.zsh"
-[ -f "$PWRL10_DIR/powerlevel10k.zsh-theme" ] && source "$PWRL10_DIR/powerlevel10k.zsh-theme"
+#[ -f "$PWRL10_DIR/powerlevel10k.zsh-theme" ] && source "$PWRL10_DIR/powerlevel10k.zsh-theme"
 #znap source marlonrichert/zsh-autocomplete
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #autoload -Uz compinit
 fpath+=~/.zfunc
@@ -89,4 +89,5 @@ if [ -e /home/daniel/.nix-profile/etc/profile.d/nix.sh ]; then . /home/daniel/.n
 
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
+eval "$(starship init zsh)"
 #eval "$(atuin init zsh --disable-up-arrow)"

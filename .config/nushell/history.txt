@@ -1,0 +1,111 @@
+l
+ls
+la
+fzf
+l
+ls
+cd alias ll = ls -l
+alias ll = ls -l
+ll
+scope aliases
+n
+shells
+dexit
+l
+drop
+config ni
+config nu 
+cd 
+source-env 
+source '($nu.env-path)';source '($nu.config-path)'
+source '($nu.env-path)'
+echo $nu.env-path
+$"source '($nu.env-path)';source '($nu.config-path)'"
+l
+ll
+ll | columns
+ll | columns | select 1
+ll | select 1
+ll 
+ll | columns | fiirst
+ll | columns | first
+ll | select name
+ll | columns 
+ll | columns 0,9
+ll | columns | 0,9
+ll | select name, size
+ll | select name size
+ll
+ll all
+ls
+ll | select name size
+eit
+exit
+l
+ls
+l
+exit
+cd 
+vi .config/nushell/config.nu
+nvim.appimage  .config/nushell/config.nu
+cd nu
+cd .config/nushell/
+l
+sl
+ls
+cat env.nu
+eza
+tldr eza
+man eza
+eza
+cd 
+eza
+ls
+open uno.json
+open uno.json | get geometry
+l
+ls
+open wp-config.php
+l
+ls
+open test.sh
+curl -sS https://starship.rs/install.sh | sh
+l
+cd 
+cd dev
+l
+ls
+cd 
+cd dotfiles/
+l
+cd 
+cd .config/nushell/
+l
+ls
+source env.nu
+source config.nu
+nvim.appimage config.nu
+exit
+l
+ls
+cd dot
+cd dotfiles/
+ls
+la
+ls -la
+cd .git
+ls
+la
+cd ..
+l
+source config.nu
+source env.nu
+vi env.nu
+carapace
+exit
+nix-env --query
+exit
+git describe 
+ssh curiosonas 
+l
+exit
